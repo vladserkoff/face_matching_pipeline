@@ -7,7 +7,7 @@ from typing import Any, Dict, List, Tuple
 import numpy as np
 from PIL import Image, ImageDraw
 
-from secondface.mtcnn import MTCNN
+from secondface.mtcnn.detector import MTCNN
 
 MINSIZE = 50  # minimum size of a face
 THRESHOLDS = (0.6, 0.7, 0.95)  # three steps's thresholds

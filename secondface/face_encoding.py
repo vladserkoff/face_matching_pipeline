@@ -8,7 +8,7 @@ import numpy as np
 import torch
 from PIL import Image
 
-from secondface.facenet import FaceNet
+from secondface.facenet.facenet import FaceNet
 
 
 class FaceEncoder:
