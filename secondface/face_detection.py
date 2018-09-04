@@ -13,7 +13,7 @@ MINSIZE = 50  # minimum size of a face
 THRESHOLDS = (0.6, 0.7, 0.95)  # three steps's thresholds
 FACTOR = 0.709  # scale factor sqrt(0.5)
 MARGIN = 0.1
-CROPPED_FACE_SIZE = 96
+CROPPED_FACE_SIZE = 160
 
 
 class FaceDetector:
