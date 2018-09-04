@@ -119,8 +119,8 @@ class MTCNN:
 
         img_boxes = get_image_boxes(bounding_boxes, image, size=48)
         if len(img_boxes) == 0:
-            return [], []
-        img_boxes = torch.tensor(img_boxes, dtype=torch.float)
+            return []
+        img_boxes = torch.as_tensor(img_boxes, dtype=torch.float)
         output = self.onet(img_boxes)
         offsets = output[1].data.numpy()  # shape [n_boxes, 4]
         probs = output[2].data.numpy()  # shape [n_boxes, 2]
