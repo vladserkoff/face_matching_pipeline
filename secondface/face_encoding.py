@@ -37,8 +37,9 @@ class FaceEncoder:
         embeddings : np.ndarray
             Each list contains 128D representation of a face
         """
-        images = [np.array(x) for x in images]
-        images = np.transpose(np.stack(images) / 255.0, (0, 3, 1, 2))
-        images_tensors = torch.as_tensor(images, dtype=torch.float)
+        images_np = np.stack([np.array(x) for x in images])
+        images_np = np.transpose((images_np - 127.5) / 128.0, (0, 3, 1, 2))
+
+        images_tensors = torch.as_tensor(images_np, dtype=torch.float)
         with torch.no_grad():
             return self.facenet(images_tensors).detach().cpu().numpy()
