@@ -44,6 +44,8 @@ def load_images(pattern: str, shuffle: bool = True) -> Iterable[Image.Image]:
     paths = glob.glob(pattern)
     if shuffle:
         random.shuffle(paths)
+    else:
+        paths.sort()
     for path in paths:
         with open(path, 'rb') as file:
             img_bytes = file.read()
