@@ -20,5 +20,5 @@ class Test:
         encoder = FaceEncoder()
         embeddings = encoder.calculate_embeddings(IMAGES)
         assert isinstance(embeddings, np.ndarray)
-        assert embeddings.shape == (3, 128)
+        assert embeddings.shape == (3, 512)
         assert np.allclose(np.linalg.norm(embeddings, axis=1), 1)
