@@ -21,9 +21,13 @@ class Test:
         assert isinstance(img, Image.Image)
         assert img.size == (512, 428)
 
+    def test_file_load(self):
+        img = data.load_image(TEST_IMG_PATH)
+        assert isinstance(img, Image.Image)
+        assert img.size == (512, 428)
+
     def test_dir_read(self):
-        pattern = os.path.join(TEST_DIR_PATH, 'face*')
-        images = data.load_images(pattern)
-        images = list(images)
+        pattern = 'face'
+        images = data.ImageDataset(TEST_DIR_PATH, pattern)
         assert len(images) == 3
         assert isinstance(images[0], Image.Image)
