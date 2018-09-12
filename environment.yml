@@ -1,0 +1,12 @@
+name: secondface
+dependencies:
+  - falcon
+  - gunicorn
+  - matplotlib
+  - mypy
+  - numpy
+  - pillow
+  - pylint
+  - pytest
+  - tensorflow
+  - yapf
