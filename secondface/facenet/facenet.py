@@ -12,14 +12,14 @@ class FaceNet:
     Encode faces in vector space.
     """
 
-    def __init__(self, frozen_graph_path: str) -> None:
+    def __init__(self, model_path: str) -> None:
         """
         Parameters
         ----------
-        frozen_graph_path : str
+        model_path : str
             Path to a frozen tensorflow model
         """
-        self.frozen_graph_path = frozen_graph_path
+        self.model_path = model_path
         self.ready = False
         self._session = None  # type: tf.Session
 
@@ -27,12 +27,13 @@ class FaceNet:
         """
         Load model from frozengraph file.
         """
-        with tf.gfile.GFile(self.frozen_graph_path, 'rb') as file:
+        with tf.gfile.GFile(self.model_path, 'rb') as file:
             graph_def = tf.GraphDef()
             graph_def.ParseFromString(file.read())
         with tf.Graph().as_default() as graph:
             tf.import_graph_def(graph_def, name='')
         self._session = tf.Session(graph=graph)
+        self.ready = True
 
     def forward(self, inputs: np.ndarray) -> np.ndarray:
         """
@@ -49,7 +50,7 @@ class FaceNet:
             Array if inputs embeddings with dimensions (B x emb_size)
         """
         if not self.ready:
-            AttributeError('You must first call `load_model`')
+            raise AttributeError('You must first call `load_model`')
         input_placeholder = self._session.graph.get_tensor_by_name("input:0")
         embeddings_placeholder = self._session.graph.get_tensor_by_name(
             "embeddings:0")
