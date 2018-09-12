@@ -4,12 +4,13 @@ Run secondface
 """
 
 import json
+import os
 
 import falcon
 
 from secondface import Reference, FaceMatcher, read_image
 
-REFERENCE_PATH = '/mnt/reference.sqlite'
+REFERENCE_PATH = os.getenv('REFERENCE_PATH', '/mnt/reference.sqlite')
 
 
 class FaceRecognition(object):
