@@ -40,26 +40,43 @@ To run change the path to sqlite database file in `docker-compose.yml`. Then
 docker-compose up --build -d
 
 # I'm using httpie (conda install httpie)
-% http POST 0.0.0.0:8000/detect < /mnt/datasets/lfw/candidates/Maria_Shriver_0002.jpg
-
+% http POST 0.0.0.0:8000/detect < Maria_Shriver_0003.jpg                                     ~
 HTTP/1.1 200 OK
 Connection: keep-alive
-Content-Length: 109
+Content-Length: 225
 Content-Type: application/json; charset=UTF-8
-Date: Thu, 13 Sep 2018 11:38:42 GMT
+Date: Thu, 13 Sep 2018 12:50:07 GMT
 Server: nginx/1.15.3
 
 [
     {
         "best_match": "maria shriver",
         "coordinates": [
-            83,
-            61,
-            179,
-            193
+            72,
+            55,
+            171,
+            197
         ],
-        "distance": 0.7145007848739624,
+        "distance": 0.767863392829895,
         "id": 0
+    },
+    {
+        "best_match": "arnold schwarzenegger",
+        "coordinates": [
+            178,
+            5,
+            250,
+            153
+        ],
+        "distance": 0.6311142444610596,
+        "id": 1
     }
 ]
 ```
+
+![maria](Maria_Shriver_0003.jpg)
+
+## Credits
+
+* FaceBoxes by Zhang et al., as implemented in [FaceBoxes-tensorflow](https://github.com/TropComplique/FaceBoxes-tensorflow)  
+* FaceNet by Schroff et al., as implemented in [facenet](https://github.com/davidsandberg/facenet)
