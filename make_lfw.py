@@ -11,7 +11,7 @@ import tarfile
 from typing import Tuple
 from urllib.request import urlretrieve
 
-from secondface.reference import construct_references
+from facematch.reference import construct_references
 
 LFW_URL = 'http://vis-www.cs.umass.edu/lfw/lfw.tgz'
 LFW_MD5 = 'a17d05bd522c52d84eca14327a23d494'
@@ -148,12 +148,12 @@ def parse_arguments(argv):
         '--lfw_dir',
         type=str,
         default=None,
-        help='Path to the data directory containing aligned LFW face patches.')
+        help='Path to the data directory containing LFW images.')
     parser.add_argument(
         '--db_path',
         type=str,
         default=None,
-        help='Path to the data directory containing aligned LFW face patches.')
+        help='Path to the resulting database.')
     return parser.parse_args(argv)
 
 

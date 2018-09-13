@@ -1,6 +1,6 @@
 # pylint: disable = all
 """
-Run secondface
+Run face matching
 """
 
 import json
