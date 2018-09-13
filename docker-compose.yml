@@ -7,7 +7,7 @@ services:
     expose:
       - "8000"
     volumes:
-      - /mnt:/mnt
+      - /mnt/datasets/lfw:/mnt
     environment:
       - REFERENCE_PATH=/mnt/reference.sqlite
 

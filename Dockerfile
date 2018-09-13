@@ -48,8 +48,8 @@ ENV PATH /usr/local/envs/$NAME/bin:$PATH
 WORKDIR /opt/$NAME
 
 ADD $NAME ./$NAME
-ADD main.py .
+ADD api.py .
 
 EXPOSE 8000
 
-CMD gunicorn -b 0.0.0.0:8000 main:app
+CMD gunicorn --bind=0.0.0.0:8000 api:app
