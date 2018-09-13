@@ -24,6 +24,7 @@ class FaceMatcher:
     def recoginze(self, image: Image.Image) -> List[Dict]:
         """
         Find faces in an image and compare them to reference photos.
+        Returning faces are sorted from left to right.
 
         Parameters
         ----------
@@ -54,6 +55,7 @@ class FaceMatcher:
             'distance': distance.item()
         } for i, (box, name,
                   distance) in enumerate(zip(boxes, names, distances))]
+        result = sorted(result, key=lambda x: x['coordinates'][0])
         return result
 
 

@@ -91,6 +91,8 @@ class FaceDetector:
                                resample=Image.BILINEAR)
             face_data = Face(box=final_box, image=face, confidence=confidence)
             detected_faces.append(face_data)
+
+        detected_faces = sorted(detected_faces, key=lambda x: x.box[0])
         return detected_faces
 
     def _get_box_coordinates(self, img_width: int, img_hight: int,
