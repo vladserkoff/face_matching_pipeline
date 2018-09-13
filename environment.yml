@@ -8,5 +8,6 @@ dependencies:
   - pillow
   - pylint
   - pytest
+  - python=3.6
   - tensorflow
   - yapf
