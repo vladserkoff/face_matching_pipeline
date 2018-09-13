@@ -15,7 +15,7 @@ This will download LFW dataset and create sqlite database that stores reference 
 If you want to test with your own dataset, run
 
 ```bash
-python make_dataset.py --reference_dir /mnt/datasets/reference --db_path /mnt/datasets/reference.sqlite
+python make_dataset.py --reference_dir /mnt/datasets/lfw/reference --db_path /mnt/datasets/lfw/reference.sqlite
 ```
 
 This will look for images stored in `reference_dir` and store faces that it would find in a sqlite db.
@@ -40,48 +40,26 @@ To run change the path to sqlite database file in `docker-compose.yml`. Then
 docker-compose up --build -d
 
 # I'm using httpie (conda install httpie)
-% http POST 0.0.0.0:8000/detect < secondface/tests/data/11_Meeting_Meeting_11_Meeting_Meeting_11_633.jpg
+% http POST 0.0.0.0:8000/detect < /mnt/datasets/lfw/candidates/Maria_Shriver_0002.jpg
 
 HTTP/1.1 200 OK
 Connection: keep-alive
-Content-Length: 329
+Content-Length: 109
 Content-Type: application/json; charset=UTF-8
-Date: Wed, 12 Sep 2018 16:02:51 GMT
+Date: Thu, 13 Sep 2018 11:38:42 GMT
 Server: nginx/1.15.3
 
 [
     {
-        "best_match": "mariah carey",
+        "best_match": "maria shriver",
         "coordinates": [
-            222,
-            100,
-            342,
-            263
+            83,
+            61,
+            179,
+            193
         ],
-        "distance": 0.5442394018173218,
+        "distance": 0.7145007848739624,
         "id": 0
-    },
-    {
-        "best_match": "irina framtsova",
-        "coordinates": [
-            85,
-            213,
-            177,
-            331
-        ],
-        "distance": 0.7241394519805908,
-        "id": 1
-    },
-    {
-        "best_match": "ann morgan",
-        "coordinates": [
-            349,
-            172,
-            438,
-            295
-        ],
-        "distance": 0.581076443195343,
-        "id": 2
     }
 ]
 ```
