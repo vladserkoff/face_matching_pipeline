@@ -1,4 +1,4 @@
-name: secondface
+name: facematch
 dependencies:
   - falcon
   - gunicorn

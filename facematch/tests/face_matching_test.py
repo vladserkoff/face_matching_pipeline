@@ -3,7 +3,7 @@
 Tests distance computation
 """
 import numpy as np
-from secondface.face_matching import find_closest
+from facematch.face_matching import find_closest
 
 
 class Test:

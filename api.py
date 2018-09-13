@@ -8,12 +8,12 @@ import os
 
 import falcon
 
-from secondface import Reference, FaceMatcher, read_image
+from facematch import Reference, FaceMatcher, read_image
 
 REFERENCE_PATH = os.getenv('REFERENCE_PATH', '/mnt/reference.sqlite')
 
 
-class FaceRecognition(object):
+class FaceMatching(object):
     def __init__(self, reference_db):
         self._reference = Reference(reference_db)
         self.sface = FaceMatcher(self._reference)
@@ -26,5 +26,5 @@ class FaceRecognition(object):
 
 
 app = falcon.API()
-face_rec = FaceRecognition(REFERENCE_PATH)
+face_rec = FaceMatching(REFERENCE_PATH)
 app.add_route('/detect', face_rec)

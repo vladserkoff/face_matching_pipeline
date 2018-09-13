@@ -12,10 +12,10 @@ from typing import Dict, List
 import numpy as np
 from PIL import Image
 
-from secondface.data import ImageDataset
-from secondface.face import Face
-from secondface.face_detection import FaceDetector
-from secondface.face_encoding import FaceEncoder
+from facematch.data import ImageDataset
+from facematch.face import Face
+from facematch.face_detection import FaceDetector
+from facematch.face_encoding import FaceEncoder
 
 
 class Reference:
@@ -208,12 +208,12 @@ def select_main_face(detected_faces: List[Face]) -> Face:
 
     Parameters
     ----------
-    detected_faces : list of `secondface.face.Face`s
+    detected_faces : list of `facematch.face.Face`s
         All the faces detected on the image.
 
     Returns
     -------
-    main_face : `secondface.face.Face`
+    main_face : `facematch.face.Face`
         Main face in the image
     """
     if len(detected_faces) == 1:

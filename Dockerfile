@@ -38,7 +38,7 @@ RUN curl -sSL https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64
     && conda config --append channels conda-forge \
     && conda clean --all --yes
 
-ENV NAME secondface
+ENV NAME facematch
 
 COPY environment.yml /tmp
 RUN conda env create -f /tmp/environment.yml && \

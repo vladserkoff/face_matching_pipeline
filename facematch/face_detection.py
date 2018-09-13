@@ -9,9 +9,9 @@ from typing import Iterable, List, Tuple
 import numpy as np
 from PIL import Image
 
-from secondface.face import Face
-from secondface.faceboxes.faceboxes import FaceBoxes
-from secondface.viz import resize
+from facematch.face import Face
+from facematch.faceboxes.faceboxes import FaceBoxes
+from facematch.viz import resize
 
 MIN_CONFIDENCE = 0.9
 MARGIN = 0.1
@@ -57,7 +57,7 @@ class FaceDetector:
 
         Returns
         -------
-        detected_faces : list of `secondface.face.Face`s
+        detected_faces : list of `facematch.face.Face`s
             Each `Face` object contains following elements:
                 `box`: list, [x_left, y_top, x_right, y_bottom] of the face area
                 `confidence`: float, model's confidence in the image being a face

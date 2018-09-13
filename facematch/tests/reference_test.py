@@ -10,7 +10,7 @@ import tempfile
 import numpy as np
 from PIL import Image
 
-from secondface import reference
+from facematch import reference
 
 TEST_DIR_PATH = os.path.join(
     os.path.realpath(os.path.dirname(__file__)), 'data')

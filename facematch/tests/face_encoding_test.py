@@ -7,7 +7,7 @@ import os
 import numpy as np
 from PIL import Image
 
-from secondface.face_encoding import FaceEncoder
+from facematch.face_encoding import FaceEncoder
 
 TEST_DIR_PATH = os.path.join(
     os.path.realpath(os.path.dirname(__file__)), 'data')

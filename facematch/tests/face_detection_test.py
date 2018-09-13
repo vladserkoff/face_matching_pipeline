@@ -6,8 +6,8 @@ import os
 
 from PIL import Image
 
-from secondface.face_detection import FaceDetector
-from secondface.face import Face
+from facematch.face_detection import FaceDetector
+from facematch.face import Face
 
 TEST_DIR_PATH = os.path.join(
     os.path.realpath(os.path.dirname(__file__)), 'data')

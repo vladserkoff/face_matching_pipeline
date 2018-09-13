@@ -8,7 +8,7 @@ from typing import List
 import numpy as np
 from PIL import Image
 
-from secondface.facenet.facenet import FaceNet
+from facematch.facenet.facenet import FaceNet
 
 
 class FaceEncoder:

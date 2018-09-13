@@ -6,7 +6,7 @@ import os
 
 from PIL import Image
 
-from secondface import data
+from facematch import data
 
 TEST_DIR_PATH = os.path.join(
     os.path.realpath(os.path.dirname(__file__)), 'data')

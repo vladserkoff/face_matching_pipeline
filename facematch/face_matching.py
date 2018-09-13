@@ -7,8 +7,8 @@ from typing import Dict, List, Tuple
 import numpy as np
 from PIL import Image
 
-from secondface.face_detection import FaceDetector
-from secondface.face_encoding import FaceEncoder
+from facematch.face_detection import FaceDetector
+from facematch.face_encoding import FaceEncoder
 
 
 class FaceMatcher:

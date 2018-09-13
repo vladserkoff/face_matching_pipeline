@@ -7,7 +7,7 @@ from typing import List
 
 from PIL import Image
 
-from secondface.viz import overlay_text
+from facematch.viz import overlay_text
 
 
 class Face:
