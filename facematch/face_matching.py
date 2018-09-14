@@ -21,7 +21,8 @@ class FaceMatcher:
         self.detector = FaceDetector()
         self.encoder = FaceEncoder()
 
-    def recoginze(self, image: Image.Image) -> List[Dict]:
+    def recoginze(self, image: Image.Image,
+                  threshold: float = 0.0) -> List[Dict]:
         """
         Find faces in an image and compare them to reference photos.
         Returning faces are sorted from left to right.
@@ -30,6 +31,9 @@ class FaceMatcher:
         ----------
         image : Image.Image
             Input image
+        threshold : float, default 0
+            Detection threshold, above which best match is THE match.
+            As a rule of thumb, 0.5 - 0.6 provides reasonable TP/FP ratio.
 
         Returns
         -------
@@ -51,8 +55,8 @@ class FaceMatcher:
         result = [{
             'id': i,
             'coordinates': box,
-            'best_match': name,
-            'distance': distance.item()
+            'best_match': name if distance > threshold else 'unknown',
+            'distance': distance.item() if distance > threshold else -1
         } for i, (box, name,
                   distance) in enumerate(zip(boxes, names, distances))]
         result = sorted(result, key=lambda x: x['coordinates'][0])

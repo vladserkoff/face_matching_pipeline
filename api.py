@@ -11,6 +11,7 @@ import falcon
 from facematch import Reference, FaceMatcher, read_image
 
 REFERENCE_PATH = os.getenv('REFERENCE_PATH', '/mnt/reference.sqlite')
+DETECTION_THRESHOLD = float(os.getenv('REFERENCE_PATH', 0.0))
 
 
 class FaceMatching(object):
@@ -21,7 +22,7 @@ class FaceMatching(object):
     def on_post(self, req, resp):
         img_bytes = req.stream.read()
         image = read_image(img_bytes)
-        result = self.sface.recoginze(image)
+        result = self.sface.recoginze(image, threshold=DETECTION_THRESHOLD)
         resp.body = json.dumps(result, ensure_ascii=False)
 
 

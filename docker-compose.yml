@@ -7,9 +7,10 @@ services:
     expose:
       - "8000"
     volumes:
-      - /mnt/datasets/lfw:/mnt
+      - /mnt:/mnt
     environment:
       - REFERENCE_PATH=/mnt/reference.sqlite
+      - DETECTION_THRESHOLD=0.55
 
   nginx:
     depends_on:
