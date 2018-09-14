@@ -65,7 +65,7 @@ def show_as_grid(images: List[Image.Image],
 
     Returns
     -------
-    image : matplotlib.image.AxesImage
+    image : Image.Image
         Resulting image.
     """
     array = np.stack([np.array(x) for x in images])
@@ -85,7 +85,8 @@ def show_as_grid(images: List[Image.Image],
                 break
             grid[y_start:y_end, x_start:x_end, :] = array[img_idx]
     image = Image.fromarray(grid)
-    image = resize(image, resize_to)
+    if resize_to:
+        image = resize(image, resize_to)
     return image
 
 
