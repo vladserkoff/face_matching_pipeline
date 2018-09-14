@@ -6,8 +6,6 @@ Visualization tools
 from typing import Any, Dict, List, Tuple, Union
 
 import matplotlib.font_manager as fmgr
-import matplotlib.image as mimg
-import matplotlib.pyplot as plt
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 
@@ -48,7 +46,7 @@ def resize(image: Image.Image,
 def show_as_grid(images: List[Image.Image],
                  ncols: int = 10,
                  padding: int = 2,
-                 figsize: Tuple[int, int] = (15, 15)) -> mimg.AxesImage:
+                 resize_to: Tuple[int, int] = DEFAULT_RESIZE) -> Image.Image:
     """
     Draw a grid of images.
     Numpy translation of `torchvision.utils.make_grid`
@@ -62,7 +60,7 @@ def show_as_grid(images: List[Image.Image],
         rows will be infered automatically.
     padding : int, default 2
         Space between images, in pixels.
-    figsize : tuple, default (15, 15)
+    resize_to : tuple, default (1024, 1024)
         Parameter to pass to `plt.subplots`.
 
     Returns
@@ -86,15 +84,8 @@ def show_as_grid(images: List[Image.Image],
             if img_idx >= nmaps:
                 break
             grid[y_start:y_end, x_start:x_end, :] = array[img_idx]
-    _, ax = plt.subplots(figsize=figsize)
-    ax.tick_params(
-        axis='both',
-        which='both',
-        bottom=False,
-        left=False,
-        labelbottom=False,
-        labelleft=False)
-    image = ax.imshow(grid, interpolation='nearest')
+    image = Image.fromarray(grid)
+    image = resize(image, resize_to)
     return image
 
 
