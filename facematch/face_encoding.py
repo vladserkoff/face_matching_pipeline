@@ -48,15 +48,15 @@ class FaceEncoder:
         embeddings : np.ndarray
             Each list contains vector representation of a face
         """
-        images_np = np.stack([np.array(x) for x in images])
+        n_images = len(images)
         if flip:
-            images_flip = [x.transpose(Image.FLIP_LEFT_RIGHT) for x in images]
-            flipped_np = np.stack([np.array(x) for x in images_flip])
-            images_np = np.concatenate([images_np, flipped_np])
+            images = images + [
+                x.transpose(Image.FLIP_LEFT_RIGHT) for x in images
+            ]
+        images_np = np.stack([np.array(x, dtype=np.float32) for x in images])
         images_np = (images_np - 127.5) / 128.0
 
-        n_images = images_np.shape[0]
-        n_batches = int(np.ceil(n_images / batch_size))
+        n_batches = int(np.ceil(images_np.shape[0] / batch_size))
         embeddings_all = []
         batch_start = 0
         for i in range(n_batches):
@@ -73,7 +73,7 @@ class FaceEncoder:
         embeddings = np.concatenate(embeddings_all, axis=0)
 
         if flip:
-            new_shape = (-1, len(images), embeddings.shape[-1])
+            new_shape = (-1, n_images, embeddings.shape[-1])
             embeddings = embeddings.reshape(new_shape)
             embeddings = np.mean(embeddings, axis=0)
             embeddings /= np.linalg.norm(embeddings, axis=1, keepdims=True)
