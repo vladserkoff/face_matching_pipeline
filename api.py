@@ -11,7 +11,7 @@ import falcon
 from facematch import Reference, FaceMatcher, read_image
 
 REFERENCE_PATH = os.getenv('REFERENCE_PATH', '/mnt/reference.sqlite')
-DETECTION_THRESHOLD = float(os.getenv('REFERENCE_PATH', 0.0))
+DETECTION_THRESHOLD = float(os.getenv('DETECTION_THRESHOLD', 0.0))
 
 
 class FaceMatching(object):
